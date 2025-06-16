@@ -1,6 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
+import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
 // Dynamically import React-Leaflet components to disable SSR
 const MapContainer = dynamic(
@@ -90,9 +93,9 @@ export default function OttoProtocol() {
             How It Works
           </h2>
           <p className="text-white mb-6 text-center">
-            Enter your location to find the closest collection hub or certified
-            repair partner. Our interactive map shows all active centers where
-            you can drop off old units or pick up parts and repair services.
+            Look on the map for the nearest repair hub. At the moment only one
+            hub is available in London, UK. We are working on expanding our
+            network to more locations.
           </p>
           <div className="w-full h-96 rounded-lg overflow-hidden">
             <MapContainer
@@ -104,9 +107,6 @@ export default function OttoProtocol() {
               {/* Example Markers */}
               <Marker position={[51.4998, -0.1757]}>
                 <Popup>Regional Hub</Popup>
-              </Marker>
-              <Marker position={[51.5005, -0.174]}>
-                <Popup>Repair Partner</Popup>
               </Marker>
             </MapContainer>
           </div>
