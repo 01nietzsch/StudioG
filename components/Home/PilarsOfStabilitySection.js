@@ -18,7 +18,7 @@ function PilarsOfStabilitySection() {
     features: [
       {
         title: "Effortless, Eco-Friendly Slow Cooking",
-        desc: "Elevate your meals with our 4.7 L Digital Slow Cooker—designed for perfect results, every time.",
+        desc: "Elevate your meals with our 3.5-4 L Digital Slow Cooker—designed for perfect results, every time.",
       },
       {
         title: "Even, Gentle Heat",
@@ -30,7 +30,7 @@ function PilarsOfStabilitySection() {
       },
       {
         title: "Smart & Simple Controls",
-        desc: "Programmable timer (up to 20 hrs), three heat settings plus “Keep Warm,” and a one-hand hinged lid for easy serving.",
+        desc: "Programmable timer, three heat settings plus “Keep Warm,” and a one-hand hinged lid for easy serving.",
       },
       {
         title: "Sustainable Design",
