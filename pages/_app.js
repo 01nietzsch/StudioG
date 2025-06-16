@@ -6,12 +6,6 @@ import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import MusicPlayer from "../components/MusicPlayer";
-if (typeof window !== "undefined") {
-  // only runs in the browser
-  require("leaflet/dist/leaflet.css");
-  require("leaflet-defaulticon-compatibility");
-  require("leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css");
-}
 // import { Analytics } from '@vercel/analytics/react';
 
 export default function MyApp({ Component, pageProps }) {
