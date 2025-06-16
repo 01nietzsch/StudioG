@@ -89,17 +89,38 @@ export default function Navbar() {
       {/* Mobile slide-out */}
       <div
         className={`
-          fixed inset-0 z-40 md:hidden
-          bg-black bg-opacity-80 backdrop-blur-sm
-          transform transition-transform duration-200 ease-in-out
-          ${showLinks ? "translate-x-0" : "-translate-x-full"}
-        `}
-        // 4. clicking backdrop should also close
+    fixed inset-0 z-40 md:hidden
+    bg-black bg-opacity-80 backdrop-blur-sm
+    transform transition-transform duration-200 ease-in-out
+    ${showLinks ? "translate-x-0" : "-translate-x-full"}
+  `}
         onClick={() => setShowLinks(false)}
       >
+        {/* Close button inside the menu */}
+        {showLinks && (
+          <button
+            className="absolute top-4 right-4 p-2 text-white"
+            onClick={() => setShowLinks(false)}
+            aria-label="Close menu"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        )}
+
         <nav
           className="flex h-full flex-col items-center justify-center space-y-6 text-xl"
-          // prevent closing when clicking inside nav links
           onClick={(e) => e.stopPropagation()}
         >
           <Link href="/" onClick={handleNavClick()}>
