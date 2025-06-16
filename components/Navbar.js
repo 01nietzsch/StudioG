@@ -62,16 +62,19 @@ export default function Navbar() {
         <Link href="/team" className="mr-10">
           Team
         </Link>
+        <Link onClick={docsRedirect} href="" className="mr-10">
+          Documentation <NavArrow />
+        </Link>
       </nav>
 
-      <div className="inline-block float-right align-middle mt-10">
+      {/* <div className="inline-block float-right align-middle mt-10">
         <button
           onClick={docsRedirect}
           className="inline-flex items-center justify-center w-auto h-auto py-3 text-black rounded-full px-7 bg-primary-gradient"
         >
           More on the slow cooker
         </button>
-      </div>
+      </div> */}
 
       {/* Mobile links */}
       <nav

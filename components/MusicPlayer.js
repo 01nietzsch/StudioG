@@ -1,78 +1,63 @@
-// import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
-// export default function MusicPlayer() {
-//   const audioRef = useRef();
-//   const [isPlaying, setIsPlaying] = useState(false);
+export default function MusicPlayer() {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-//   function playNpause() {
-//     isPlaying ? audioRef.current.pause() : audioRef.current.play();
+  useEffect(() => {
+    // Ensure audio is paused on mount so the icon matches
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+  }, []);
 
-//     setIsPlaying(!isPlaying);
-//   }
+  const togglePlayPause = () => {
+    if (!audioRef.current) return;
 
-//   return (
-//     <>
-//       <audio autoPlay loop ref={audioRef} src="/assets/sounds/music.wav" />
-//       <button
-//         className=" cursor-pointer bg-gray-900 text-center w-14 h-14 rounded-full"
-//         onClick={playNpause}
-//       >
-//         {isPlaying ? (
-//           <svg
-//             className="mx-auto"
-//             width="22"
-//             height="18"
-//             viewBox="0 0 22 18"
-//             fill="none"
-//             xmlns="http://www.w3.org/2000/svg"
-//           >
-//             <path
-//               d="M10 2L5 6H1V12H5L10 16V2Z"
-//               stroke="white"
-//               strokeWidth="1.5"
-//               stroke-linecap="square"
-//             />
-//             <path
-//               d="M15 6V6C16.6544 7.48898 16.7823 10.0395 15.285 11.6865L15 12"
-//               stroke="white"
-//               strokeWidth="1.5"
-//             />
-//             <path
-//               d="M17 4V4C19.7574 6.48163 19.9704 10.7325 17.4751 13.4774L17 14"
-//               stroke="white"
-//               strokeWidth="1.5"
-//             />
-//           </svg>
-//         ) : (
-//           <svg
-//             className="mx-auto"
-//             width="24"
-//             height="18"
-//             viewBox="0 0 24 18"
-//             fill="none"
-//             xmlns="http://www.w3.org/2000/svg"
-//           >
-//             <path
-//               d="M10 2L5 6H1V12H5L10 16V2Z"
-//               stroke="white"
-//               stroke-width="1.5"
-//               stroke-linecap="square"
-//             />
-//             <path
-//               d="M22 6L16 12"
-//               stroke="white"
-//               strokeWidth="1.5"
-//               stroke-linecap="square"
-//             />
-//             <path
-//               d="M16 6L22 12"
-//               stroke="white"
-//               strokeWidth="1.5"
-//               stroke-linecap="square"
-//             />
-//           </svg>
-//         )}
-//       </button>
-//     </>
-//   );
-// }
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50">
+      <audio
+        loop
+        ref={audioRef}
+        src="/assets/sounds/Queen - We Are The Champions (Official Video).wav"
+      />
+      <button
+        onClick={togglePlayPause}
+        className="flex items-center justify-center w-14 h-14 bg-gray-900 bg-opacity-75 text-white rounded-full shadow-lg cursor-pointer"
+      >
+        {isPlaying ? (
+          // Pause Icon
+          <svg
+            width="22"
+            height="18"
+            viewBox="0 0 22 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="1" y="2" width="4" height="14" fill="white" />
+            <rect x="13" y="2" width="4" height="14" fill="white" />
+          </svg>
+        ) : (
+          // Play Icon
+          <svg
+            width="24"
+            height="18"
+            viewBox="0 0 24 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M2 2L22 9L2 16V2Z" fill="white" />
+          </svg>
+        )}
+      </button>
+    </div>
+  );
+}

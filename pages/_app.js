@@ -5,6 +5,7 @@ import LightNode from "../components/LightNode";
 import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
 import Script from "next/script";
+import MusicPlayer from "../components/MusicPlayer";
 // import { Analytics } from '@vercel/analytics/react';
 
 export default function MyApp({ Component, pageProps }) {
@@ -43,6 +44,7 @@ export default function MyApp({ Component, pageProps }) {
         <LightNode position="top-left" />
         <LightNode position="bottom-right" />
         <Component {...pageProps} />
+        <MusicPlayer />
       </Layout>
 
       {/* <Analytics /> */}
