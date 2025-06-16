@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import url('https://fonts.cdnfonts.com/css/gotham'); */
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../public/assets/fonts/Gotham/GothamLight.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "GothamThin";
+  src: url("../public/assets/fonts/Gotham/Gotham-Thin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "GothamMedium";
+  src: url("../public/assets/fonts/Gotham/GothamMedium.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "GothamBold";
+  src: url("../public/assets/fonts/Gotham/Gotham-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "GothamBlack";
+  src: url("../public/assets/fonts/Gotham/Gotham-Black.otf") format("opentype");
+}
+
+.bold {
+  font-family: "GothamBold";
+}
+
+.black {
+  font-family: "GothamBlack";
+}
+
+.medium {
+  font-family: "GothamMedium";
+}
+
+.thin {
+  font-family: "Gotham";
+}
+
+.light {
+  font-family: "GothamThin";
+}
+
+h1,
+h2,
+button {
+  font-family: "GothamMedium";
+}
+
+:root {
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Gotham", sans-serif;
+  font-weight: lighter;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html {
+  background-color: #2e2e2e;
+  /* height: 100%;
+    width: 100%; */
+}
+
+.centered-container {
+  height: 100%;
+  width: 100%;
+  /* position: absolute; */
+}
+
+.vertical-center {
+  /* position: absolute; */
+  /* top: 50vh;
+    -ms-transform: translateY(-50vh);
+    transform: translateY(-50vh); */
+
+  margin-top: 30vh;
+  /* margin-top: 18%;
+    margin-bottom: 15%; */
+
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.full-heigh {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.audio-margin {
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 640px) {
+  .container {
+    margin-top: 50px;
+  }
+  .audio-margin {
+    top: inherit;
+    -ms-transform: inherit;
+    transform: inherit;
+  }
+}
+
+.navBar {
+  z-index: 80;
+}
+
+.bg-primary-gradient {
+  background: linear-gradient(to left, white, white);
+  font-weight: 100;
+}
+
+.text-primary-gradient {
+  background: linear-gradient(to left, #0056fe, #08a4df);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.swapPanel {
+  z-index: 10;
+}
+
+.lightNode {
+  z-index: 0;
+}
+
+#web3-login-root .web3login-modal-heading {
+  color: green;
+}
+#web3-login-root .web3login-modal {
+  background: orange;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.shadow-round {
+  box-shadow: 0px 0px 5px #63ff49;
+}
+
+.topnav-centered {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mt-full {
+  margin-top: 100%;
+  /* transform: translate(0%, 100%); */
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  z-index: 30;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #585858;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #424242;
+  transition: all 2000ms;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #343434;
+}
+
+.gotham-thin {
+  font-family: "Gotham", sans-serif;
+  font-weight: 25;
+}
+
+button {
+  font-family: "Roboto", sans-serif;
+}
