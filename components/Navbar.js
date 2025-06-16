@@ -65,6 +65,9 @@ export default function Navbar() {
         <Link onClick={docsRedirect} href="" className="mr-10">
           Documentation <NavArrow />
         </Link>
+        <Link href="/OttoProtocol" className="mr-10">
+          Repair Services
+        </Link>
       </nav>
 
       {/* <div className="inline-block float-right align-middle mt-10">

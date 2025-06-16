@@ -44,7 +44,7 @@ export default function Footer() {
                 Documentation <NavArrow />
               </a>
               <a
-                href="mailto:vj923@ic.ac.uk"
+                href="mailto:team.studiog.contact@gmail.com"
                 className="mx-4 my-2 md:my-0 text-white cursor-pointer"
               >
                 Get In Touch <NavArrow />

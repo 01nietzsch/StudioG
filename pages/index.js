@@ -1,7 +1,7 @@
 import First from "../components/Home/First";
 import PilarsOfStabilitySection from "../components/Home/PilarsOfStabilitySection";
 import TrilemmaSection from "../components/Home/TrilemmaSection";
-import OttoProtocol from "../components/Home/OttoProtocol";
+// import OttoProtocol from "../components/Home/OttoProtocol";
 import TeamSection from "../components/Home/TeamSection";
 import FollowUs from "../components/Home/FollowUs";
 
