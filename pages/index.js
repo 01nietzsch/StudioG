@@ -30,8 +30,6 @@ export default function Home() {
 
       <TrilemmaSection />
 
-      {/* <OttoProtocol /> */}
-
       <TeamSection />
     </>
   );
