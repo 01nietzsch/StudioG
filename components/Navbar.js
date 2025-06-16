@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import NavArrow from "./NavArrow";
@@ -6,97 +6,119 @@ import NavArrow from "./NavArrow";
 export default function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
 
-  function docsRedirect() {
-    window.location.href = "/assets/pdf/Final Design Report.pdf";
-  }
+  // 3. Auto-close on desktop resize
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 768 && showLinks) {
+        setShowLinks(false);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [showLinks]);
 
-  function appRedirect() {
-    window.location.href = "/assets/imgs/20240613-135010-1-1_kGaEK3U6.mp4";
-  }
+  const docsRedirect = () => {
+    window.location.href = "/assets/pdf/Final Design Report.pdf";
+  };
+
+  // helper for closing menu when picking a link
+  const handleNavClick = (cb) => () => {
+    if (typeof cb === "function") cb();
+    setShowLinks(false);
+  };
 
   return (
-    <header className="fixed top-0 w-full px-10 pb-5 font-thin text-white bg-red pt-7 bg-opacity-70 backdrop-blur-sm navBar">
-      {/* Burger menu
-      <button
-        className="inline-block sm:hidden fill-white"
-        onClick={() => setShowLinks(!showLinks)}
-      >
-        <svg viewBox="0 0 200 180" width="35" height="35">
-          <rect width="200" height="12" rx="8"></rect>
-          <rect y="30" width="125" height="12" rx="8"></rect>
-          <rect y="60" width="125" height="12" rx="8"></rect>
-        </svg>
-      </button>
-      <button
-        className={`md:hidden absolute top-36 right-5 ${
-          showLinks ? "block" : "hidden"
-        }`}
-        onClick={() => setShowLinks(false)}
-      >
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
-          <path
-            fillRule="evenodd"
-            d="M13.414 12l5.293-5.293a1 1 0 0 0-1.414-1.414L12 10.586 6.707 5.293a1 1 0 0 0-1.414 1.414L10.586 12l-5.293 5.293a1 1 0 1 0 1.414 1.414L12 13.414l5.293 5.293a1 1 0 0 0 1.414-1.414L13.414 12z"
-            clipRule="evenodd"
-          ></path>
-        </svg>
-      </button> */}
-
-      <div className="inline-block align-middle">
-        <Link href={"/"}>
+    <header className="fixed inset-x-0 top-0 z-50 bg-red bg-opacity-70 backdrop-blur-sm text-white">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+        {/* Logo */}
+        <Link href="/">
           <Image
             src="/assets/imgs/ChatGPT Image 13 juin 2025, 17_27_21.png"
-            alt="Otto Logo"
+            alt="Logo"
             width={107}
-            height={1}
+            height={40}
             priority
-            className="inline-block align-middle"
           />
         </Link>
+
+        {/* Desktop links */}
+        <nav className="hidden md:flex space-x-8 font-thin">
+          <Link href="/" onClick={handleNavClick()}>
+            Home
+          </Link>
+          <Link href="/team" onClick={handleNavClick()}>
+            Team
+          </Link>
+          <button
+            onClick={handleNavClick(docsRedirect)}
+            className="flex items-center font-thin"
+          >
+            Documentation <NavArrow />
+          </button>
+          <Link href="/OttoProtocol" onClick={handleNavClick()}>
+            Repair Services
+          </Link>
+        </nav>
+
+        {/* Burger button (visible on mobile) */}
+        <button
+          className="md:hidden p-2 focus:outline-none"
+          onClick={() => setShowLinks((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          {showLinks ? (
+            // X icon
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            // Hamburger icon
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <rect y="4" width="24" height="2" rx="1" />
+              <rect y="11" width="24" height="2" rx="1" />
+              <rect y="18" width="24" height="2" rx="1" />
+            </svg>
+          )}
+        </button>
       </div>
 
-      <nav className="hidden text-center md:inline-block topnav-centered">
-        <Link href="/" className="mr-10">
-          Home
-        </Link>
-        <Link href="/team" className="mr-10">
-          Team
-        </Link>
-        <Link onClick={docsRedirect} href="" className="mr-10">
-          Documentation <NavArrow />
-        </Link>
-        <Link href="/OttoProtocol" className="mr-10">
-          Repair Services
-        </Link>
-      </nav>
-
-      {/* <div className="inline-block float-right align-middle mt-10">
-        <button
-          onClick={docsRedirect}
-          className="inline-flex items-center justify-center w-auto h-auto py-3 text-black rounded-full px-7 bg-primary-gradient"
-        >
-          More on the slow cooker
-        </button>
-      </div> */}
-
-      {/* Mobile links */}
-      <nav
-        className={`md:hidden ${
-          showLinks ? "block" : "hidden"
-        } absolute top-0 left-0 w-full bg-black bg-opacity-70 backdrop-blur-sm text-center py-4`}
+      {/* Mobile slide-out */}
+      <div
+        className={`
+          fixed inset-0 z-40 md:hidden
+          bg-black bg-opacity-80 backdrop-blur-sm
+          transform transition-transform duration-200 ease-in-out
+          ${showLinks ? "translate-x-0" : "-translate-x-full"}
+        `}
+        // 4. clicking backdrop should also close
+        onClick={() => setShowLinks(false)}
       >
-        <Link href="/" className="block my-2">
-          Home
-        </Link>
-        <Link href="/team" className="block my-2">
-          Team
-        </Link>
-        <Link onClick={docsRedirect} href="" className="block my-2">
-          Documentation <NavArrow />
-        </Link>
-      </nav>
-
-      <div className="bottom-0"></div>
+        <nav
+          className="flex h-full flex-col items-center justify-center space-y-6 text-xl"
+          // prevent closing when clicking inside nav links
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Link href="/" onClick={handleNavClick()}>
+            Home
+          </Link>
+          <Link href="/team" onClick={handleNavClick()}>
+            Team
+          </Link>
+          <button
+            onClick={handleNavClick(docsRedirect)}
+            className="flex items-center font-thin"
+          >
+            Documentation <NavArrow />
+          </button>
+          <Link href="/OttoProtocol" onClick={handleNavClick()}>
+            Repair Services
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }
