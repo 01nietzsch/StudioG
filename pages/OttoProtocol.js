@@ -2,8 +2,6 @@ import React from "react";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
 import "leaflet/dist/leaflet.css";
-// import "leaflet-defaulticon-compatibility";
-// import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
 // Dynamically import React-Leaflet components to disable SSR
 const MapContainer = dynamic(
