@@ -43,7 +43,7 @@ export default function Team() {
         />
         <Profile name="Luca" description="Design Team" img="Luca (2).jpg" />
         <Profile name="Harsh" description="Design Team" img="Harsh.jpg" />
-        <Profile name="Marlon" description="Design Team" img="Marlon.jpg" />
+        <Profile name="Marlon" description="Design Team" img="Marlon.png" />
         <Profile name="Temin" description="Design Team" img="Temin.jpg" />
         <Profile name="Samuel" description="Design Team" img="Samuel.jpg" />
         <Profile name="Ezekiel" description="UI officer" img="Ezekiel.jpg" />
