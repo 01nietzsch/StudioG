@@ -39,7 +39,7 @@ export default function Team() {
         <Profile
           name="Muizz"
           description="Materials selection officer"
-          img="Ezekiel.jpg"
+          img="Muizz.jpg"
         />
         <Profile name="Luca" description="Design Team" img="Luca (2).jpg" />
         <Profile name="Harsh" description="Design Team" img="Harsh.jpg" />
